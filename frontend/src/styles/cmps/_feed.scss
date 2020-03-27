@@ -1,0 +1,51 @@
+.home {
+    display: flex;
+    justify-content: center;
+
+    .post-list {
+        margin-top: 60px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+.post-modal {
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0vh;
+    left: 0vh;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.action-list {
+    background-color: white;
+    border-radius: rem(14px);
+    text-align: center;
+    font-size: rem(18px);
+    cursor: pointer;
+    padding: 0px;
+
+    li {
+        border-bottom: 2px solid $clr2;
+        width: 400px;
+        padding: 10px 0px 10px 0px;
+    }
+
+    .edit-post {
+        font-weight: normal;
+        color: black;
+    }
+
+    .delete-post {
+        font-weight: bold;
+        color: red;
+    }
+    .close-modal {
+        border: none;
+    }
+}

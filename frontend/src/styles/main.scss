@@ -1,0 +1,16 @@
+// SETUP
+@import 'setup/variabels';
+@import 'setup/mixins';
+@import 'setup/functions';
+
+// BASICS
+@import 'basics/base';
+@import 'basics/helpers';
+ @import 'basics/layout';
+
+// COMPONENTS
+@import 'cmps/navbar';
+@import 'cmps/feed';
+@import 'cmps/post';
+@import 'cmps/login';
+@import 'cmps/createPost';

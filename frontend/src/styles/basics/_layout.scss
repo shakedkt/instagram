@@ -1,0 +1,58 @@
+.main-layout {
+
+    @include for-narrow-layout {
+        .post-list {
+            margin-top: 40px;
+            width: 100%;
+            background-color: white;
+
+            .post-preview {
+                width: 100%;
+                margin-bottom: 10px;
+                border: none;
+            }   
+        }
+       .search {
+           display: none;
+       }
+
+       .create-new-post {
+        position: absolute;
+        width: 25px;
+        left: 17px;
+        top: 15px;
+      }
+      .create-body{
+        margin: 0 auto;
+        border: 1px solid $clr4;
+        width: 100%;
+        }
+
+        .post {
+            display: inline;
+        }
+
+    }
+
+    @include for-medium-layout {
+        .create-new-post {
+            position: fixed;
+            width: 35px;
+            left: 3px;
+            top: 13px;
+        }      
+    }
+
+    @include for-create-layout  {
+        .create-form {
+            display: flex;
+            flex-direction: column;
+        }
+        .publish {
+            display: flex;
+            position: inherit;
+            align-self: flex-end;
+        }
+    }
+
+}
