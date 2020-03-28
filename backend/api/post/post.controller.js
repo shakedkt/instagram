@@ -7,6 +7,7 @@ module.exports = {
     getPosts,
     deletePost,
     addPost,
+    addComment
 }
 
 
@@ -34,6 +35,9 @@ async function addPost(req, res) {
     res.json(post)
 }
 
-// async function addComment(req, res) {
-//     var 
-// }
+
+async function addComment(req, res) {
+    var comment = req.body;
+    comment = await postService.update(comment)    
+    res.json(comment)
+}

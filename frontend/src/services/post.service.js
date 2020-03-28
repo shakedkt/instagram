@@ -123,8 +123,7 @@ function query() {
 
 
 function addComment(comment) {
-  return httpService.post(`post`, comment)
-
+  return httpService.put(`post/${comment.postId}`, comment)
 }
 
 function add(post) {

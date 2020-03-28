@@ -44,7 +44,8 @@ export default {
     return {
       loginCred: {},
       signupCred: {},
-      userToEdit: {}
+      userToEdit: {},
+      msg: ''
     }
   },
  computed: {
@@ -58,15 +59,15 @@ export default {
       return this.$store.getters.loggedInUser.userName
     }
   },
- methods: {
-    async doLogin() {
+ methods: {  
+  async doLogin() {
       const cred = this.loginCred
+      if(!cred.userName || !cred.password) return this.msg = 'Please enter user/password'
       await this.$store.dispatch({type :'login', userCred:cred})
       this.loginCred = {};
-
       this.$router.push('/user/' + this.userName + '/home')
-      
     },   
+
     doLogout() {
       this.$store.dispatch({type: 'logout'})
     },

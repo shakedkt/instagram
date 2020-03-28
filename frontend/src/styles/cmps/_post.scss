@@ -70,10 +70,6 @@
     align-items: center;
 }
 
-.post-section-btn:hover {
-    cursor: pointer;
-    color: #3897f0;
-}
 
 .image-post {
 max-height: 650px;
@@ -107,5 +103,10 @@ object-fit: cover;
         color: #c6e0fa;  
         font-size: rem(15px);
     }
+    .post-section-btn:hover {
+        cursor: pointer;
+        color: #3897f0;
+    }
+    
 }
 

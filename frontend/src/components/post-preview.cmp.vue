@@ -5,27 +5,28 @@
         <router-link :to="'/user/' + userName + '/home'" class="home" exact>
           <img class="profile-pic" :src="post.createdBy.avatar" />
         </router-link>
-        <span class="creator-name"> {{post.createdBy.userName}} </span>
+        <span class="creator-name">{{post.createdBy.userName}}</span>
       </div>
       <span class="post-menu" @click="changeModal">...</span>
-
     </div>
-   <div v-if="isModalOpen" class="post-modal" @click="changeModal">
-
-          <ul class="action-list">
-            <li class="delete-post" @click="deletePost">delete post</li>
-              <li class="edit-post">edit Post</li>
-            <li class="close-modal">Cancel </li>
-          </ul>
-        </div>
+    <div v-if="isModalOpen" class="post-modal" @click="changeModal">
+      <ul class="action-list">
+        <li class="delete-post" @click="deletePost">delete post</li>
+        <li class="edit-post">edit Post</li>
+        <li class="close-modal">Cancel</li>
+      </ul>
+    </div>
 
     <img class="image-post" :src="post.imgUrl" />
 
     <div class="action-bar">
       <div class="left-side-actions">
         <span class="like-btn" @click="changeLike">
-          <button class="wpO6b" type="button" v-html=" isLiked ? likesPathColor.fullLike : likesPathColor.emptyLike">
-          </button>
+          <button
+            class="wpO6b"
+            type="button"
+            v-html=" isLiked ? likesPathColor.fullLike : likesPathColor.emptyLike"
+          ></button>
         </span>
 
         <span class="comment-btn" @click="focusComment">
@@ -81,7 +82,7 @@
       <div class="like-count">{{post.likes}} likes</div>
 
       <div class="post-desc">
-        <span class="creator-name">{{post.createdBy.userName}} </span>
+        <span class="creator-name">{{post.createdBy.userName}}</span>
         <span>{{post.desc}}</span>
       </div>
 
@@ -89,7 +90,7 @@
 
       <ul class="comments">
         <li v-for="comment in post.comments" :key="comment._id">
-          <span class="creator-name"> {{comment.userName}} </span>
+          <span class="creator-name">{{comment.userName}}</span>
           <span>{{comment.txt}}</span>
         </li>
       </ul>
@@ -97,7 +98,8 @@
 
     <div>
       <form class="add-comment" @submit.prevent="addComment">
-        <input ref="comment"
+        <input
+          ref="comment"
           class="form-input"
           type="text"
           v-model="commentBody"
@@ -111,7 +113,7 @@
 </template>
 <script>
 // import moment from 'moment';
-import svgService from '../services/svg.service.js'
+import svgService from "../services/svg.service.js";
 
 export default {
   props: {
@@ -122,45 +124,45 @@ export default {
   },
   data() {
     return {
-      commentBody: '',
+      commentBody: "",
       isModalOpen: false,
       isLiked: false,
-      likesPathColor: svgService.getLikePath() 
+      likesPathColor: svgService.getLikePath()
     };
   },
   methods: {
     async addComment() {
-      const comment = { 
+      const comment = {
         postId: this.post._id,
         txt: this.commentBody,
         createdAt: Date.now(),
         userName: this.userName.userName
-      }
-    
+      };
       await this.$store.dispatch({ type: "addComment", comment });
-      this.commentBody = ''
+      this.commentBody = "";
     },
     focusComment() {
-      this.$refs.comment.focus()
+      this.$refs.comment.focus();
     },
     async deletePost() {
-        await this.$store.dispatch({ type: "deletePost",  post: this.post});
-        this.changeModal()
+      await this.$store.dispatch({ type: "deletePost", post: this.post });
+      this.changeModal();
     },
     async editPost() {
-        this.changeModal()
+      this.changeModal();
     },
     changeModal() {
-      this.isModalOpen = !this.isModalOpen
+      this.isModalOpen = !this.isModalOpen;
     },
-   async changeLike() {
-    await this.$store.dispatch({ type: "changelike",  post: this.post});
+    async changeLike() {
+      await this.$store.dispatch({ type: "changelike", post: this.post });
+      this.isLiked = !this.isLiked
     }
   },
   computed: {
     userName() {
       if (this.$store.getters.loggedInUser)
-      return this.$store.getters.loggedInUser;
+        return this.$store.getters.loggedInUser;
       return -1;
     }
   }

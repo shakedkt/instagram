@@ -9,20 +9,16 @@ export const postStore = {
         setPosts(state, { posts }) {
             state.posts = posts;
         },
+        addPost(state, {post}) {
+            state.posts.unshift(post)
+        },
         addComment(state, { comment }) {
             const post = state.posts.find(post => {
                 return post._id === comment.postId
             })
             post.comments.unshift(comment)
-
-            const postIdx = state.posts.findIndex(post => {
-                return post._id === comment.postId
-            })
-            state.posts.splice(postIdx, 1, post)
         },
-        addPost(state, {post}) {
-            state.posts.unshift(post)
-        },
+        
         deletePost(state, { post }) {
             state.posts = state.posts.filter(currPost => currPost._id !== post._id)
         },
@@ -45,7 +41,6 @@ export const postStore = {
             context.commit({type: 'setPosts', posts})
         },
         async addComment(context, { comment }) {
-            console.log('commentInfo', comment);
             await postService.addComment(comment);
             context.commit({
                 type: 'addComment',

@@ -56,8 +56,8 @@ export default {
   methods: {
     async addPost() {      
       const post = {
-        desc: this.post.desc,
-        createdBy: {
+          desc: this.post.desc,
+          createdBy: {
           userName: this.loggedInUser.userName,
           fullName: this.loggedInUser.fullName,
           avatar: this.loggedInUser.avatar

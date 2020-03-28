@@ -41,10 +41,39 @@ async function add(post) {
     }
 }
 
+async function update(comment) {
+    const collection = await dbService.getCollection('post')
+    const postId = comment.postId;
+    try {
+        await collection.update(
+              {"_id": ObjectId(postId)},
+              { $push: { comments: comment}});
+        return comment;
+    } catch (err) {
+        console.log(`ERROR: cannot insert user`)
+        throw err;
+    }
+}
+
+// async function LikePost(post) {
+//     const collection = await dbService.getCollection('post')
+//     const postId = post._id;
+//     try {
+//         await collection.update(
+//               {"_id": ObjectId(postId)},
+//               { $push: { likes: comment}});
+//         return comment;
+//     } catch (err) {
+//         console.log(`ERROR: cannot insert user`)
+//         throw err;
+//     }
+// }
+
 module.exports = {
     query,
     remove,
-    add
+    add,
+    update
 }
 
 
