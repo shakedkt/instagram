@@ -123,16 +123,17 @@ function query() {
 
 
 function addComment(comment) {
-  return httpService.put(`post/${comment.postId}`, comment)
+  return httpService.put(`post/add-comment/${comment.postId}`, comment)
 }
 
 function add(post) {
   return httpService.post(`post`, post)
 }
 
-// function changeLike(post) {
-
-// }
+function changeLike(post) {
+console.log(post);
+return httpService.put(`post/like/${post._id}`, post)
+}
 
 function deletePost(post) {
     return httpService.delete(`post/${post._id}`)
@@ -144,7 +145,7 @@ export const postService = {
   addComment,
   add,
   deletePost,
-  //changeLike
+  changeLike
 }
 
 

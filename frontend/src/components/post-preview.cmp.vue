@@ -25,7 +25,7 @@
           <button
             class="wpO6b"
             type="button"
-            v-html=" isLiked ? likesPathColor.fullLike : likesPathColor.emptyLike"
+            v-html=" post.isLiked ? likesPathColor.fullLike : likesPathColor.emptyLike"
           ></button>
         </span>
 
@@ -82,7 +82,7 @@
       <div class="like-count">{{post.likes}} likes</div>
 
       <div class="post-desc">
-        <span class="creator-name">{{post.createdBy.userName}}</span>
+        <span class="creator-name">{{post.createdBy.userName}} </span>
         <span>{{post.desc}}</span>
       </div>
 
@@ -90,12 +90,11 @@
 
       <ul class="comments">
         <li v-for="comment in post.comments" :key="comment._id">
-          <span class="creator-name">{{comment.userName}}</span>
-          <span>{{comment.txt}}</span>
+          <span class="creator-name">{{comment.userName}} </span>
+          <span> {{comment.txt}}</span>
         </li>
       </ul>
     </section>
-
     <div>
       <form class="add-comment" @submit.prevent="addComment">
         <input
@@ -126,7 +125,6 @@ export default {
     return {
       commentBody: "",
       isModalOpen: false,
-      isLiked: false,
       likesPathColor: svgService.getLikePath()
     };
   },
@@ -141,6 +139,19 @@ export default {
       await this.$store.dispatch({ type: "addComment", comment });
       this.commentBody = "";
     },
+    async changeLike() {
+      console.log("this.post before", this.post);
+      var likes = parseInt(this.post.likes)
+      this.post.isLiked = !this.post.isLiked;
+      if (this.post.isLiked) {        
+      likes += 1
+      this.post.likes = likes
+      } else {
+        likes -= 1
+        this.post.likes = likes
+      }
+      await this.$store.dispatch({ type: "changeLike", post: this.post });
+    },
     focusComment() {
       this.$refs.comment.focus();
     },
@@ -153,10 +164,6 @@ export default {
     },
     changeModal() {
       this.isModalOpen = !this.isModalOpen;
-    },
-    async changeLike() {
-      await this.$store.dispatch({ type: "changelike", post: this.post });
-      this.isLiked = !this.isLiked
     }
   },
   computed: {

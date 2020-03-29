@@ -1,0 +1,56 @@
+.profile {
+    margin-top: 80px;
+
+    .profile-pic {
+        height: 150px;
+        width: 150px;
+        object-fit: cover;
+        margin-right: 100px;
+    }
+
+    .profile-userName {
+        font-size: rem(30px);
+        margin: none;
+    }
+
+    .user-deatils {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        width: 300px;
+    }
+}
+
+.deatils-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 1000px;
+    margin-left: 80px;
+}
+
+.deatails {
+    font-weight: bold;
+}
+
+.show-options {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-weight: bold;
+
+    > span{
+        margin: 0 20px 0 20px;
+    }
+}
+
+.post-menu {
+    cursor: pointer;
+    font-size: rem(20px);
+}
+
+.top-user-deatils {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

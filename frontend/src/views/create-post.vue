@@ -3,35 +3,39 @@
     <navbar></navbar>
 
     <section class="new-post">
-      
       <div class="create-body">
         <form @submit.prevent="addPost" class="create-form">
-          
-        <button class="publish">
-          <img src="../photos/addPost.png">
-        </button>
-
+        
           <div class="create-form-body">
-            <input class="form-input" type="text"  v-model="post.desc" placeholder="write a caption here...." required />
-          
+            <div class="create-top">
+            <input
+              class="form-input"
+              type="text"
+              v-model="post.desc"
+              placeholder="write a caption here"
+              required
+            />
+ <button class="publish">
+            <img src="../photos/addPost.png" />
+          </button>
+</div>
             <label>
               <input class="choose-file" @change="uploadImg" type="file" />
-              <img v-if="!post.uploadedImg" src="../photos/import_placeholder.png">
+              <img class="place-holder" v-if="!post.uploadedImg" src="../photos/import_placeholder.png" />
               <img v-if="post.uploadedImg" :src="post.uploadedImg" />
             </label>
           </div>
-        </form>          
+        </form>
       </div>
+    </section>
   </section>
-</section>
 </template>
 
 <script>
 import navbar from "../components/nav-bar.cmp.vue";
-import userService from "../services/user.service.js";
 
 export default {
-  name: "home",
+  name: "create-post",
   components: {
     navbar
   },
@@ -45,19 +49,18 @@ export default {
   },
   computed: {
     loggedInUser() {
-      var user = this.$store.getters.loggedInUser
-      return userService.getByUsername(user);
+      return this.$store.getters.loggedInUser;
     },
     userName() {
-      return this.$store.getters.loggedInUser.userName
+      return this.$store.getters.loggedInUser.userName;
     }
   },
 
   methods: {
-    async addPost() {      
+    async addPost() {
       const post = {
-          desc: this.post.desc,
-          createdBy: {
+        desc: this.post.desc,
+        createdBy: {
           userName: this.loggedInUser.userName,
           fullName: this.loggedInUser.fullName,
           avatar: this.loggedInUser.avatar
@@ -65,17 +68,18 @@ export default {
         imgUrl: this.post.uploadedImg,
         likes: 0,
         location: "",
-        comments: []
+        comments: [],
+        isliked: false
       };
       await this.$store.dispatch({ type: "addPost", post });
-      this.$router.push("/user/" + this.userName + "/home");
+      this.$router.push("/user/" + this.loggedInUser.userName + "/home");
     },
     async uploadImg(ev) {
       const res = await this.$store.dispatch({ type: "addImg", ev });
 
       const { url } = res;
       console.log(url);
-      
+
       this.post.uploadedImg = url;
     }
   }

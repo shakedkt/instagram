@@ -7,7 +7,8 @@ module.exports = {
     getPosts,
     deletePost,
     addPost,
-    addComment
+    addComment,
+    changeLike
 }
 
 
@@ -40,4 +41,13 @@ async function addComment(req, res) {
     var comment = req.body;
     comment = await postService.update(comment)    
     res.json(comment)
+}
+
+
+async function changeLike(req, res) {
+    var post = req.body;
+    console.log('got here');
+    
+    post = await postService.changeLike(post)    
+    res.json(post)
 }

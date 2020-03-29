@@ -47,16 +47,39 @@
         outline: none;
         border: 1px solid $clr2;
       }
-      
-      hr {
-        border: 0;
-        clear:both;
-        display:block;
-        font-weight: bold;
-        width: 96%;               
-        background-color: $clr2;
-        height: 1px;
-      }
-
+}
+hr {
+  border: 0;
+  clear:both;
+  display:block;
+  font-weight: bold;
+  width: 96%;               
+  background-color: $clr2;
+  height: 1px;
 }
 
+
+.login-as-guest {
+  background-color: $clr3;
+  padding: 10px 71px;
+  opacity: 0.5;
+  font-size: rem(12px);
+  text-align: center;
+  margin-top: 10px;
+  }
+
+
+  .login-as-guest:hover {
+    opacity: 1;
+    cursor: pointer;
+   }
+
+
+   .sign-up {
+     margin-top: 20px;
+   }
+
+   .error-msg {
+     color: red;
+     font-size: rem(12px);
+   }

@@ -7,9 +7,7 @@ const session = require('express-session')
 
 const app = express()
 const http = require('http').createServer(app);
-// const io = require('socket.io')(http);
-
-// const authRoutes = require('./api/auth/auth.routes')
+const authRoutes = require('./api/auth/auth.routes')
 const userRoutes = require('./api/user/user.routes')
 const postRoutes = require('./api/post/post.routes')
 
@@ -36,7 +34,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // routes
-// app.use('/api/auth', authRoutes)
+app.use('/api/auth', authRoutes)
 app.use('/api/user', userRoutes)
 app.use('/api/post', postRoutes)
 // connectSockets(io)

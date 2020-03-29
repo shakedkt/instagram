@@ -4,13 +4,13 @@
    <div id="nav" class="main-header">
 
   <div class="create-new-post">
-<router-link :to=" '/user/:' + userId + '/create' " v-if="router !== 'create' " exact>
+<router-link :to=" '/user/:' + user.userName + '/create' " v-if="router !== 'create' " exact>
     <img src="../photos/add_btn.png">
 </router-link>
   </div>
 
 
-<router-link :to="'/user/' + userId + '/home'" class="home" exact>
+<router-link :to="'/user/' + user.userName + '/home'" class="home" exact>
   <div class="logo-img">
       <img src="../photos/logo.png">
   </div>
@@ -22,7 +22,7 @@
 
     <div class="navbar-controllers">
 
-      <router-link :to=" '/user/' + userId + '/home' " v-html="router === 'home-page' ? homePathColor.fullHome : homePathColor.emptyHome" exact>  
+      <router-link :to=" '/user/' + user.userName + '/home' " v-html="router === 'home-page' ? homePathColor.fullHome : homePathColor.emptyHome" exact>  
       </router-link>
 
           <svg class="inbox" fill="#262626" height="22" viewBox="0 0 48 48" width="22">
@@ -40,8 +40,8 @@
           </svg>
         </a>
 
-        <router-link :to=" '/user/' + userId "  exact>
-          <img class="profile-pic" src="https://instagram.fevn1-1.fna.fbcdn.net/v/t51.2885-19/44884218_345707102882519_2446069589734326272_n.jpg?_nc_ht=instagram.fevn1-1.fna.fbcdn.net&amp;_nc_ohc=mpZNugcTX-0AX9DS5Gx&amp;oh=84e7f54665e885e15fce0a2fed6d6dd1&amp;oe=5E9E17F1&amp;ig_cache_key=YW5vbnltb3VzX3Byb2ZpbGVfcGlj.2">
+        <router-link :to=" '/user/' + user.userName "  exact>
+          <img class="navbar-profile-pic" :src="this.user.avatar">
         </router-link>
       </div>
     </div>
@@ -57,9 +57,9 @@ export default {
     userSearch
   },
   computed: {
-    userId() {
-      if(this.$store.getters.loggedInUser) return this.$store.getters.loggedInUser.userName
-      return 1
+    user() {
+      var user = this.$store.getters.loggedInUser
+      return user
     }
   },
     data () {

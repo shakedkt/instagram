@@ -9,7 +9,7 @@ export const postStore = {
         setPosts(state, { posts }) {
             state.posts = posts;
         },
-        addPost(state, {post}) {
+        addPost(state, { post }) {
             state.posts.unshift(post)
         },
         addComment(state, { comment }) {
@@ -18,27 +18,28 @@ export const postStore = {
             })
             post.comments.unshift(comment)
         },
-        
         deletePost(state, { post }) {
             state.posts = state.posts.filter(currPost => currPost._id !== post._id)
         },
-        changelike(state, { post }) {
-
-            console.log(post);
-
+        changeLike(state, { post }) {
+            const currPost = state.posts.find(currPost => {
+                return currPost._id === post._id
+            })
+            console.log(currPost.isLiked);
+            
         }
     },
     getters: {
         posts(state) {
-            return state.posts;
+            return state.posts.reverse();
         },
     },
     actions: {
         async loadPosts(context) {
             const posts = await postService.query();
             console.log('posts store', posts);
-            
-            context.commit({type: 'setPosts', posts})
+
+            context.commit({ type: 'setPosts', posts })
         },
         async addComment(context, { comment }) {
             await postService.addComment(comment);
@@ -53,7 +54,7 @@ export const postStore = {
             return res
         },
         async addPost(context, { post }) {
-          post = await postService.add(post);
+            post = await postService.add(post);
             context.commit({
                 type: 'addPost',
                 post
@@ -74,10 +75,12 @@ export const postStore = {
                 post
             })
         },
-        async changelike(context, {post}) {
-            await postService.changelike(post);
+        async changeLike(context, { post }) {
+            console.log('got here');
+
+            await postService.changeLike(post);
             context.commit({
-                type: 'changelike',
+                type: 'changeLike',
                 post
             })
         }

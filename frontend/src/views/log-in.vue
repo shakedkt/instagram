@@ -10,17 +10,22 @@
 
     <div>
       <form @submit.prevent="doLogin">
-        <input class="form-input" type="text" v-model="loginCred.userName" placeholder="username" required/>
+        <input class="form-input" type="text" v-model="loginCred.userName" placeholder="Username"/>
         <br />
-        <input class="form-input" type="text" v-model="loginCred.password" placeholder="Password" required/>
+        <input class="form-input" type="text" v-model="loginCred.password" placeholder="Password"/>
         <br />
+        <div class="error-msg">{{this.msg}} </div>
         <button class="login-section-btn">Login</button>
       </form>
     </div><hr>
 
+<div>
+  <span class="login-as-guest" @click="loginAsGuest">Login as guest</span>
+</div>
+<hr>
 
     <div>
-      <form @submit.prevent="doSignup">
+      <form class="sign-up" @submit.prevent="doSignup">
         <input class="form-input" type="text" v-model="signupCred.email" placeholder="Email" required/>
         <br />
         <input class="form-input" type="text" v-model="signupCred.password" placeholder="Password" required/>
@@ -45,7 +50,8 @@ export default {
       loginCred: {},
       signupCred: {},
       userToEdit: {},
-      msg: ''
+      msg: '',
+      isGuest: false
     }
   },
  computed: {
@@ -62,18 +68,30 @@ export default {
  methods: {  
   async doLogin() {
       const cred = this.loginCred
-      if(!cred.userName || !cred.password) return this.msg = 'Please enter user/password'
-      await this.$store.dispatch({type :'login', userCred:cred})
+      if(!cred.userName || !cred.password && this.isGuest === false) return this.msg = 'Please enter userName/password'
+      console.log('cred',cred);
+      
+      var user = await this.$store.dispatch({type :'login', userCred:cred})
+      console.log('user in log-in', user);
+      
       this.loginCred = {};
-      this.$router.push('/user/' + this.userName + '/home')
+      if (user) this.$router.push('/user/' + user.userName + '/home')
+      else return this.msg = 'userName or password incorrect'
     },   
 
     doLogout() {
       this.$store.dispatch({type: 'logout'})
+      if (this.isGuest === true) this.isGuest = false
     },
     doSignup() {
       const cred = this.signupCred
       this.$store.dispatch({type: 'signup', userCred: cred})
+    },
+    async loginAsGuest() {
+      this.loginCred.userName = 'guest'
+      this.loginCred.password = '1'
+      this.isGuest = true
+      this.doLogin()
     }
  }
 

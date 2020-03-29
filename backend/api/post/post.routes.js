@@ -1,6 +1,6 @@
 const express = require('express')
 // const {requireAuth, requireAdm in} = require('../../middlewares/requireAuth.middleware')
-const {addPost, getPosts, deletePost, addComment} = require('./post.controller')
+const {addPost, getPosts, deletePost, addComment, changeLike} = require('./post.controller')
 const router = express.Router()
 
 // middleware that is specific to this router
@@ -9,6 +9,8 @@ const router = express.Router()
 router.get('/', getPosts)
 router.post('/', addPost)
 router.delete('/:id', deletePost)
-router.put('/:id', addComment)
+router.put('/add-comment/:id', addComment)
+router.put('/like/:id', changeLike)
+
 
 module.exports = router
