@@ -12,7 +12,7 @@
       <form @submit.prevent="doLogin">
         <input class="form-input" type="text" v-model="loginCred.userName" placeholder="Username"/>
         <br />
-        <input class="form-input" type="text" v-model="loginCred.password" placeholder="Password"/>
+        <input class="form-input" type="password" v-model="loginCred.password" placeholder="Password"/>
         <br />
         <div class="error-msg">{{this.msg}} </div>
         <button class="login-section-btn">Login</button>
