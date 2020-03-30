@@ -14,14 +14,23 @@
         }
        .search {
            display: none;
-       }
 
-       .create-new-post {
-        position: absolute;
-        width: 25px;
-        left: 17px;
-        top: 15px;
-      }
+        }
+               #nav {
+                   display: flex;
+                   .create-new-post{
+                    position: unset;
+                    top: none;
+                    left: none;
+                    }
+               }
+
+    //    .create-new-post {
+    //     position: absolute;
+    //     width: 25px;
+    //     left: 17px;
+    //     top: 15px;
+    //   }
       .create-body{
         margin: 0 auto;
         border: 1px solid $clr4;

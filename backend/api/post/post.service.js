@@ -2,11 +2,11 @@
 const dbService = require('../../services/db.service')
 const ObjectId = require('mongodb').ObjectId
 
-async function query(filterBy = {}) {
+async function query() {
 
     const collection = await dbService.getCollection('post')
     try {
-        const posts = collection.find().toArray(); // if we get something messy, try
+        const posts = collection.find({}).limit(8).sort({"timeStamp": -1}).toArray()        
         return posts
     } catch (err) {
         console.log('ERROR: cannot find posts')
@@ -17,7 +17,7 @@ async function query(filterBy = {}) {
 async function remove(postId) {
     const collection = await dbService.getCollection('post')
     try {
-        await collection.deleteOne({ "_id": ObjectId(postId) })
+        await collection.deleteOne({ "_id": ObjectId(postId)})
     } catch (err) {
         console.log(`ERROR: cannot remove post ${postId}`)
         throw err;

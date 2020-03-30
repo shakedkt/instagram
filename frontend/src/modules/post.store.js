@@ -31,7 +31,7 @@ export const postStore = {
     },
     getters: {
         posts(state) {
-            return state.posts.reverse();
+            return state.posts
         },
     },
     actions: {

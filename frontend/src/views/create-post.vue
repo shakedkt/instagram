@@ -69,7 +69,8 @@ export default {
         likes: 0,
         location: "",
         comments: [],
-        isliked: false
+        isliked: false,
+        timeStamp: Date.now()
       };
       await this.$store.dispatch({ type: "addPost", post });
       this.$router.push("/user/" + this.loggedInUser.userName + "/home");

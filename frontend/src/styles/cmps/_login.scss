@@ -7,7 +7,7 @@
 
   .sign-in-section {
     border: 1px solid $clr2;
-    padding: 40px;
+    padding: 40px 40px 20px 40px;
     background-color: white;
 
     display: flex;
@@ -28,6 +28,9 @@
         opacity: 0.5;
         text-align: center;
         margin-top: 10px;
+        border-radius: rem(5px);
+        font-weight: bold;
+        color: white;
         }
 
        .login-section-btn:hover {
@@ -43,9 +46,11 @@
 
        .form-input{
         background-color: $clr1;
-        padding: 5px 55px;
+        padding: 10px 110px 10px 3px;
         outline: none;
         border: 1px solid $clr2;
+        border-radius: rem(5px);
+        margin-bottom: 10px;
       }
 }
 hr {
@@ -58,14 +63,19 @@ hr {
   height: 1px;
 }
 
+.guest-mode {
+  margin-top: 40px;
+}
 
 .login-as-guest {
   background-color: $clr3;
-  padding: 10px 71px;
+  padding: 10px 30px;
   opacity: 0.5;
   font-size: rem(12px);
   text-align: center;
-  margin-top: 10px;
+  border-radius: rem(5px);
+  font-weight: bold;
+  color: white;
   }
 
 

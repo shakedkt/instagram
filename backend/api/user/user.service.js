@@ -58,18 +58,26 @@ async function remove(userId) {
     }
 }
 
-async function update(user) {
+async function update(post) {
     const collection = await dbService.getCollection('user')
-    user._id = ObjectId(user._id);
+    
+    const userName = post.createdBy.userName
+    console.log('post in user.service',post);
 
+    console.log('got here userService');
+    console.log(userName);
+    
     try {
-        await collection.replaceOne({"_id":user._id}, {$set : user})
-        return user
+        await collection.updateOne(
+            { "userName" : userName},
+            { $push: { posts: post } });
+        return post;    
     } catch (err) {
-        console.log(`ERROR: cannot update user ${user._id}`)
+        console.log(`ERROR: cannot update post ${post}`)
         throw err;
     }
 }
+
 
 async function add(user) {
     const collection = await dbService.getCollection('user')

@@ -1,7 +1,5 @@
-// const logger = require('../../services/logger.service')
 const postService = require('./post.service')
- 
-// TODO: needs error handling! try, catch
+const userService = require('../user/user.service.js')
 
 module.exports = {
     getPosts,
@@ -29,9 +27,9 @@ async function deletePost(req, res) {
 
 async function addPost(req, res) {
     var post = req.body;
-    // post.byUserId = req.session.user._id;
+    post.userName = req.session.user.userName;
     post = await postService.add(post)
-    // post.createdBy.userName = req.session.user;
+    await userService.update(post)
     
     res.json(post)
 }

@@ -19,12 +19,11 @@
       </form>
     </div><hr>
 
-<div>
+<div class="guest-mode">
   <span class="login-as-guest" @click="loginAsGuest">Login as guest</span>
 </div>
-<hr>
 
-    <div>
+    <!-- <div>
       <form class="sign-up" @submit.prevent="doSignup">
         <input class="form-input" type="text" v-model="signupCred.email" placeholder="Email" required/>
         <br />
@@ -34,7 +33,7 @@
         <br />
         <button class="login-section-btn">Signup</button>
       </form>
-    </div>
+    </div> -->
 
 
 </div>
@@ -68,11 +67,8 @@ export default {
  methods: {  
   async doLogin() {
       const cred = this.loginCred
-      if(!cred.userName || !cred.password && this.isGuest === false) return this.msg = 'Please enter userName/password'
-      console.log('cred',cred);
-      
+      if(!cred.userName || !cred.password && this.isGuest === false) return this.msg = 'Please enter userName/password'      
       var user = await this.$store.dispatch({type :'login', userCred:cred})
-      console.log('user in log-in', user);
       
       this.loginCred = {};
       if (user) this.$router.push('/user/' + user.userName + '/home')

@@ -63,10 +63,5 @@ export default {
             await UserService.remove(userId);
             context.commit({type: 'removeUser', userId})
         },
-        async updateUser(context, {user}) {
-            user = await UserService.update(user);
-            context.commit({type: 'setUser', user})
-            return user;
-        }
     }
 }

@@ -11,7 +11,8 @@ const authRoutes = require('./api/auth/auth.routes')
 const userRoutes = require('./api/user/user.routes')
 const postRoutes = require('./api/post/post.routes')
 
-// const connectSockets = require('./api/socket/socket.routes')
+
+// app​.​use​(​express​.​static​(​'public'​));
 
 
 app.use(cookieParser())

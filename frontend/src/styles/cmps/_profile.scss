@@ -6,6 +6,7 @@
         width: 150px;
         object-fit: cover;
         margin-right: 100px;
+        border-radius: 100px;
     }
 
     .profile-userName {
@@ -54,3 +55,12 @@
     flex-direction: row;
     justify-content: space-between;
 }
+
+.posts-container {
+    display: grid;
+    grid-template-columns: 220px 220px 220px;
+    grid-column-gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+    flex-direction: row;
+  }
