@@ -11,9 +11,7 @@ const authRoutes = require('./api/auth/auth.routes')
 const userRoutes = require('./api/user/user.routes')
 const postRoutes = require('./api/post/post.routes')
 
-
-// app​.​use​(​express​.​static​(​'public'​));
-
+app.use(express.static('public'));
 
 app.use(cookieParser())
 app.use(bodyParser.json());
