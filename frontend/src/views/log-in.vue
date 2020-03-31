@@ -23,17 +23,6 @@
   <span class="login-as-guest" @click="loginAsGuest">Login as guest</span>
 </div>
 
-    <!-- <div>
-      <form class="sign-up" @submit.prevent="doSignup">
-        <input class="form-input" type="text" v-model="signupCred.email" placeholder="Email" required/>
-        <br />
-        <input class="form-input" type="text" v-model="signupCred.password" placeholder="Password" required/>
-        <br />
-        <input class="form-input" type="text" v-model="signupCred.userName" placeholder="Username" required/>
-        <br />
-        <button class="login-section-btn">Signup</button>
-      </form>
-    </div> -->
 
 
 </div>

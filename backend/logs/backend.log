@@ -144,3 +144,6 @@ Mon, 30 Mar 2020 13:05:17 GMT - Debug - auth.service - login with email: shakedk
 Tue, 31 Mar 2020 09:19:42 GMT - Info - Server is running on port: 3030
 Tue, 31 Mar 2020 09:20:34 GMT - Debug - auth.service - login with email: shakedkt
 Tue, 31 Mar 2020 09:22:25 GMT - Debug - auth.service - login with email: guest
+Tue, 31 Mar 2020 09:27:27 GMT - Info - Server is running on port: 3030
+Tue, 31 Mar 2020 09:27:36 GMT - Debug - auth.service - login with email: shakedkt
+Tue, 31 Mar 2020 09:28:14 GMT - Debug - auth.service - login with email: guest

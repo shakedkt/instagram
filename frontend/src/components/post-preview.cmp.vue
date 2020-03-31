@@ -12,7 +12,6 @@
     <div v-if="isModalOpen" class="post-modal" @click="changeModal">
       <ul class="action-list">
         <li class="delete-post" v-if="this.userName.userName === this.post.createdBy.userName || this.userName.isAdmin === true" @click="deletePost">delete post</li>
-        <li class="edit-post">edit Post</li>
         <li class="close-modal">Cancel</li>
       </ul>
     </div>
@@ -159,9 +158,6 @@ export default {
       await this.$store.dispatch({ type: "deletePost", post: this.post });
       this.changeModal();
        
-    },
-    async editPost() {
-      this.changeModal();
     },
     changeModal() {
       this.isModalOpen = !this.isModalOpen;
