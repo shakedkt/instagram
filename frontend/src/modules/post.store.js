@@ -49,7 +49,6 @@ export const postStore = {
             })
         },
         async addImg(context, { ev }) {
-            console.log(ev);
             const res = await cloudinaryService.uploadImg(ev);
             return res
         },

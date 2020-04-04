@@ -8,7 +8,7 @@ export default {
     state: {
         loggedInUser : localloggedInUser,
         users: [],
-        isGuest: false
+        isGuest: false,
     },
     getters: {
         users(state) {
@@ -23,7 +23,7 @@ export default {
     },
     mutations: {
         setUser(state, {user}) {
-            state.loggedInUser = user;            
+            state.loggedInUser = user            
         },
         setUsers(state, {users}) {
             state.users = users;
@@ -54,8 +54,12 @@ export default {
             context.commit({type: 'setUsers', users})
             return users;
         },
-        async loadUser(context) {
-            const user = await userService.getByUserName();
+        async updateUser(context, {userName}) {
+            console.log('before:',userName);
+            
+            const user = await userService.getByUserName(userName);
+            console.log('userStore update user:', user);
+            
             context.commit({type: 'setUser', user})
             return user
         },

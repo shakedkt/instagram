@@ -27,8 +27,9 @@ async function deletePost(req, res) {
 
 async function addPost(req, res) {
     var post = req.body;
-    post.userName = req.session.user.userName;
     post = await postService.add(post)
+    console.log('post after postService.add', post);
+    
     await userService.update(post)
     
     res.json(post)

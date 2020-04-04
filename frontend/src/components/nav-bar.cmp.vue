@@ -59,6 +59,8 @@ export default {
   computed: {
     user() {
       var user = this.$store.getters.loggedInUser
+      console.log('navbar user',user);
+      
       return user
     }
   },
@@ -67,10 +69,7 @@ export default {
         router: this.$route.name,
         homePathColor: svgService.getHomePath(),
       }
-    },
-    created() {
-      console.log(this.router);
-      }
+    }
 }
 </script>
 

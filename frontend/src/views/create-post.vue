@@ -73,14 +73,13 @@ export default {
         timeStamp: Date.now()
       };
       await this.$store.dispatch({ type: "addPost", post });
-      this.$router.push("/user/" + this.loggedInUser.userName + "/home");
+      const userName = post.createdBy.userName      
+      await this.$store.dispatch({ type: "updateUser", userName }); 
+      this.$router.push("/user/" + userName + "/home");
     },
     async uploadImg(ev) {
       const res = await this.$store.dispatch({ type: "addImg", ev });
-
       const { url } = res;
-      console.log(url);
-
       this.post.uploadedImg = url;
     }
   }

@@ -1,12 +1,12 @@
 <template>
-  <section>
+  <section v-if="loggedInUser">
     <navbar></navbar>
     <div class="profile">
       <div class="deatils-section">
         <img class="profile-pic" :src="loggedInUser.avatar" />
         <div>
           <div class="top-user-deatils">
-            <span class="profile-userName">{{this.loggedInUser.userName}}</span>
+            <span class="profile-userName">{{loggedInUser.userName}}</span>
 
             <div>
               <button class="post-menu" @click="changeModal" type="button">
@@ -28,11 +28,11 @@
             </div>
           </div>
           <div class="user-deatils">
-            <span class="deatails">{{this.loggedInUser.posts.length}}</span>
+            <span class="deatails">{{loggedInUser.posts.length}}</span>
             <span>posts</span>
-            <span class="deatails">{{this.loggedInUser.followers.length}}</span>
+            <span class="deatails">{{loggedInUser.followers.length}}</span>
             <span>followers</span>
-            <span class="deatails">{{this.loggedInUser.following.length}}</span>
+            <span class="deatails">{{loggedInUser.following.length}}</span>
             <span>following</span>
           </div>
         </div>
@@ -71,15 +71,13 @@ export default {
   },
   data() {
     return {
-      user: this.loggedInUser,
       isModalOpen: false
     };
   },
   computed: {
-    loggedInUser() {
-      var user = this.$store.getters.loggedInUser;
-      return user;
-    }
+     loggedInUser() {
+      return this.$store.getters.loggedInUser;
+    },
   },
   methods: {
     changeModal() {
@@ -89,9 +87,10 @@ export default {
       this.$store.dispatch({ type: "logout" });
       this.$router.push("/");
     }
-  }
+  },
 };
 </script>
 
 <style>
 </style>
+   

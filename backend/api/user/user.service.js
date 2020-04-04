@@ -62,10 +62,6 @@ async function update(post) {
     const collection = await dbService.getCollection('user')
     
     const userName = post.createdBy.userName
-    console.log('post in user.service',post);
-
-    console.log('got here userService');
-    console.log(userName);
     
     try {
         await collection.updateOne(
