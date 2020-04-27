@@ -60,8 +60,8 @@ async function changeLike(post) {
     try {
         await collection.updateOne(
             { "_id": ObjectId(post._id) },
-            { $inc  : { "likes": (post.isliked) ? -1 : +1 }},
-            { $set : { "isliked": (post.isliked) ? true : false }}
+            { $set : { "isliked": (post.isliked) ? true : false }},
+            { $inc  : { "likes": (post.isliked) ? -1 : +1 }}
         )
         return post;
     } catch (err) {

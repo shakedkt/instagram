@@ -139,15 +139,15 @@ export default {
       this.commentBody = "";
     },
     async changeLike() {
-      var likes = parseInt(this.post.likes)
-      this.post.isLiked = !this.post.isLiked;
-      if (this.post.isLiked) {        
-      likes += 1
-      this.post.likes = likes
-      } else {
-        likes -= 1
-        this.post.likes = likes
-      }
+      // var likes = parseInt(this.post.likes)
+      // this.post.isLiked = !this.post.isLiked;
+      // if (this.post.isLiked) {        
+      // likes += 1
+      // this.post.likes = likes
+      // } else {
+      //   likes -= 1
+      //   this.post.likes = likes
+      // }
       await this.$store.dispatch({ type: "changeLike", post: this.post });
     },
     focusComment() {
@@ -156,6 +156,9 @@ export default {
     async deletePost() {
       
       await this.$store.dispatch({ type: "deletePost", post: this.post });
+      const userName = this.$route.params.id
+      await this.$store.dispatch({ type: "updateUser", userName }); 
+
       this.changeModal();
        
     },

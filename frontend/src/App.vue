@@ -5,11 +5,9 @@
 </template>
 
 <script>
-  // import navbar from './components/nav-bar.cmp.vue'
 
 export default {
   components: {
-    // navbar
   }
 }
 
@@ -17,4 +15,3 @@ export default {
 
 <style lang="scss">
 </style>
-

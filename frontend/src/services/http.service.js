@@ -12,7 +12,6 @@ var axios = Axios.create({
 
 export default {
     get(endpoint, data){
-        // console.log(data);
         return ajax(endpoint, 'GET', data)
     },
     post(endpoint, data){

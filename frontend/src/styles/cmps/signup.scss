@@ -1,0 +1,21 @@
+.signup-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: $clr1;
+    height: 100vh;
+}
+
+.log-in {
+    margin-top: 20px;
+    border: 1px solid $clr4;
+    padding: 15px 70px 15px 70px;
+    background-color: white;
+      .sign-up-btn{
+      font-weight: bold;
+      color: $clr3;
+      cursor: pointer;
+    }
+  }
+  

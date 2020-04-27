@@ -42,7 +42,6 @@ export default {
             const user = await UserService.signup(userCred)
             context.commit({type: 'setUser', user})
             return user;
-            
         },
         async logout(context) {
             await UserService.logout()

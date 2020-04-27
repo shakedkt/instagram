@@ -16,7 +16,6 @@ function add(post) {
 }
 
 function changeLike(post) {
-console.log(post);
 return httpService.put(`post/like/${post._id}`, post)
 }
 

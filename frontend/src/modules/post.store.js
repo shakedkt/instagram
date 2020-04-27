@@ -75,7 +75,7 @@ export const postStore = {
             })
         },
         async changeLike(context, { post }) {
-            console.log('got here');
+            console.log('got here post.store');
 
             await postService.changeLike(post);
             context.commit({

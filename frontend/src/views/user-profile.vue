@@ -4,12 +4,12 @@
     <div class="profile">
       <div class="deatils-section">
         <img class="profile-pic" :src="loggedInUser.avatar" />
-        <div>
+        <div class="user-details">
           <div class="top-user-deatils">
             <span class="profile-userName">{{loggedInUser.userName}}</span>
 
-            <div>
-              <button class="post-menu" @click="changeModal" type="button">
+            <div class="modal-menu">
+              <button @click="changeModal" type="button">
                 <svg
                   aria-label="Options"
                   class="_8-yf5"
@@ -27,14 +27,16 @@
               </button>
             </div>
           </div>
-          <div class="user-deatils">
+          <div class="user-deatils-wide-display">
             <span class="deatails">{{loggedInUser.posts.length}}</span>
             <span>posts</span>
             <span class="deatails">{{loggedInUser.followers.length}}</span>
             <span>followers</span>
             <span class="deatails">{{loggedInUser.following.length}}</span>
             <span>following</span>
+          
           </div>
+          <div class="full-name">{{loggedInUser.fullName}}</div>
         </div>
       </div>
 
@@ -44,12 +46,34 @@
           <li class="close-modal">Cancel</li>
         </ul>
       </div>
-      <hr />
+
       <div class="show-options">
         <span>posts</span>
         <span>igtv</span>
         <span>saved</span>
         <span>tagged</span>
+      </div>
+
+      <div class="user-deatils-narrow-display">
+        <div class="posts-count">
+          <span class="deatails">{{loggedInUser.posts.length}}</span>
+          <span>posts</span>
+        </div>
+        <div class="followers-count">
+          <span class="deatails">{{loggedInUser.followers.length}}</span>
+          <span>followers</span>
+        </div>
+        <div class="following-count">
+          <span class="deatails">{{loggedInUser.following.length}}</span>
+          <span>following</span>
+        </div>
+      </div>
+
+      <div class="options-menu">
+        <span class="post-svg" v-html="this.postsPath.postSvg"></span>
+        <span class="video-svg" v-html="this.videoPath.videoSvg"></span>
+        <span class="saved-svg" v-html="this.savedPath.savedSvg"></span>
+        <span class="tagged-svg" v-html="this.taggedPath.taggedSvg"></span>
       </div>
 
       <div class="posts-container">
@@ -63,6 +87,7 @@
 
 <script>
 import navbar from "../components/nav-bar.cmp.vue";
+import svgService from "../services/svg.service";
 
 export default {
   name: "profile",
@@ -71,13 +96,17 @@ export default {
   },
   data() {
     return {
-      isModalOpen: false
+      isModalOpen: false,
+      postsPath: svgService.getPostsPath(),
+      videoPath: svgService.getVideoPath(),
+      savedPath: svgService.getSavedPath(),
+      taggedPath: svgService.getTaggedPath()
     };
   },
   computed: {
-     loggedInUser() {
+    loggedInUser() {
       return this.$store.getters.loggedInUser;
-    },
+    }
   },
   methods: {
     changeModal() {
@@ -87,7 +116,7 @@ export default {
       this.$store.dispatch({ type: "logout" });
       this.$router.push("/");
     }
-  },
+  }
 };
 </script>
 

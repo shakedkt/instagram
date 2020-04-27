@@ -5,12 +5,18 @@ export default {
     logout,
     getUsers,
     getByUserName,
+    signup,
 }
 
 async function login(userCred) {
   const user = await httpService.post('auth/login', userCred)
   if (user) return _handleLogin(user)
   return false
+}
+
+async function signup(userCred) {
+    const user = await httpService.post(userCred)
+    return user
 }
 
 function getByUserName(userName) {

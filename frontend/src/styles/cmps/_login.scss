@@ -1,64 +1,69 @@
-.login-page{
+.login-page {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   background-color: $clr1;
+  height: 100vh;
+}
 
   .sign-in-section {
     border: 1px solid $clr2;
     padding: 40px 40px 20px 40px;
     background-color: white;
+    border: 1px solid $clr4;
+
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-   
-       .login-logo {
-           height: 51px;
-           width: 175px;
-           margin-bottom: 20px;
-         }      
-       }
 
-       .login-section-btn {
-        background-color: $clr3;
-        padding: 10px 96px;
-        opacity: 0.5;
-        text-align: center;
-        margin-top: 10px;
-        border-radius: rem(5px);
-        font-weight: bold;
-        color: white;
-        }
+    .login-logo {
+      height: 51px;
+      width: 175px;
+      margin-bottom: 20px;
+    }
+  }
 
-       .login-section-btn:hover {
-        opacity: 1;
-        cursor: pointer;
-       }
-   
-       .login-background {
-         margin-top: 10px;
-         height: 618px;
-         width: 400px;
-       }
+  .login-section-btn {
+    background-color: $clr3;
+    padding: 10px 96px;
+    opacity: 0.5;
+    text-align: center;
+    margin-top: 10px;
+    border-radius: rem(5px);
+    font-weight: bold;
+    color: white;
+  }
 
-       .form-input{
-        background-color: $clr1;
-        padding: 10px 110px 10px 3px;
-        outline: none;
-        border: 1px solid $clr2;
-        border-radius: rem(5px);
-        margin-bottom: 10px;
-      }
-}
+  .login-section-btn:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+
+  .login-background {
+    margin-top: 10px;
+    height: 618px;
+    width: 400px;
+  }
+
+  .form-input {
+    background-color: $clr1;
+    padding: 10px 110px 10px 3px;
+    outline: none;
+    border: 1px solid $clr2;
+    border-radius: rem(5px);
+    margin-bottom: 10px;
+  }
+
+
 hr {
   border: 0;
-  clear:both;
-  display:block;
+  clear: both;
+  display: block;
   font-weight: bold;
-  width: 96%;               
+  width: 96%;
   background-color: $clr2;
   height: 1px;
 }
@@ -76,20 +81,40 @@ hr {
   border-radius: rem(5px);
   font-weight: bold;
   color: white;
-  }
+}
 
 
-  .login-as-guest:hover {
-    opacity: 1;
+.login-as-guest:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+
+.sign-up {
+  margin-top: 20px;
+  border: 1px solid $clr4;
+  padding: 15px 45px 15px 45px;
+  background-color: white;
+    .sign-up-btn{
+    font-weight: bold;
+    color: $clr3;
     cursor: pointer;
-   }
+  }
+}
 
+.error-msg {
+  color: red;
+  font-size: rem(12px);
+}
 
-   .sign-up {
-     margin-top: 20px;
-   }
+.signup-or-login{
+  display: flex;
+  flex-direction: column;
+}
 
-   .error-msg {
-     color: red;
-     font-size: rem(12px);
-   }
+.warning-msg{
+  color: red;
+  font-size: rem(10px);
+  position: fixed;
+  bottom: 1px;
+}

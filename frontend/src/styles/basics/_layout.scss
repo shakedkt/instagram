@@ -10,31 +10,28 @@
                 width: 100%;
                 margin-bottom: 10px;
                 border: none;
-            }   
+            }
         }
-       .search {
-           display: none;
+
+        .search {
+            display: none;
 
         }
-               #nav {
-                   display: flex;
-                   .create-new-post{
-                    position: unset;
-                    top: none;
-                    left: none;
-                    }
-               }
 
-    //    .create-new-post {
-    //     position: absolute;
-    //     width: 25px;
-    //     left: 17px;
-    //     top: 15px;
-    //   }
-      .create-body{
-        margin: 0 auto;
-        border: 1px solid $clr4;
-        width: 100%;
+        #nav {
+            display: flex;
+
+            .create-new-post {
+                position: unset;
+                top: none;
+                left: none;
+            }
+        }
+
+        .create-body {
+            margin: 0 auto;
+            border: 1px solid $clr4;
+            width: 100%;
         }
 
         .post {
@@ -49,19 +46,69 @@
             width: 35px;
             left: 3px;
             top: 13px;
-        }      
+        }
     }
 
-    @include for-create-layout  {
+
+    @include for-create-layout {
+        .login-background {
+            display: none;
+        }
+
         .create-form {
             display: flex;
             flex-direction: column;
         }
+
         .publish {
             display: flex;
             position: inherit;
             align-self: flex-end;
         }
-    }
 
+        .profile {
+            .profile-pic {
+                height: 77px;
+                width: 77px;
+                margin-right: 5px;
+            }
+
+            .user-deatils-wide-display {
+                display: none;
+            }
+
+            .user-deatils-narrow-display {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                border-top: 1px solid $clr4;
+                margin-top: 20px;
+
+                div {
+                    display: flex;
+                    flex-direction: column;
+                    text-align: center;
+                }
+            }
+        }
+
+        .options-menu {
+            display: flex;
+            justify-content: space-evenly;
+            border: 1px solid $clr4;
+            align-items: center;
+            padding-top: 10px;
+        }
+
+        .show-options {
+            display: none;
+        }
+
+        .posts-container {
+            grid-auto-rows: auto;
+            margin: 0 15px 0 15px;
+            grid-column-gap: 5px;
+            grid-row-gap: 5px;
+        }
+    }
 }
