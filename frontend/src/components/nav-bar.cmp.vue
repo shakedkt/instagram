@@ -59,8 +59,6 @@ export default {
   computed: {
     user() {
       var user = this.$store.getters.loggedInUser
-      console.log('navbar user',user);
-      
       return user
     }
   },

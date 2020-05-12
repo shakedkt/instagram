@@ -2,12 +2,13 @@
 const dbService = require('../../services/db.service')
 const ObjectId = require('mongodb').ObjectId
 
-async function query() {
-
+async function query(amount) {
+    amount = parseInt(amount)
     const collection = await dbService.getCollection('post')
     try {
-        const posts = collection.find({}).limit(8).sort({"timeStamp": -1}).toArray()        
+        const posts = collection.find({}).limit(amount).sort({ "timeStamp": -1 }).toArray()
         return posts
+
     } catch (err) {
         console.log('ERROR: cannot find posts')
         throw err;
@@ -17,7 +18,7 @@ async function query() {
 async function remove(postId) {
     const collection = await dbService.getCollection('post')
     try {
-        await collection.deleteOne({ "_id": ObjectId(postId)})
+        await collection.deleteOne({ "_id": ObjectId(postId) })
     } catch (err) {
         console.log(`ERROR: cannot remove post ${postId}`)
         throw err;
@@ -55,13 +56,14 @@ async function update(comment) {
 
 async function changeLike(post) {
     const collection = await dbService.getCollection('post')
-    console.log(post.isliked);
-    
+    console.log('post', post)
+    console.log('post.isliked', post.isliked);
+
     try {
         await collection.updateOne(
             { "_id": ObjectId(post._id) },
-            { $set : { "isliked": (post.isliked) ? true : false }},
-            { $inc  : { "likes": (post.isliked) ? -1 : +1 }}
+            { $inc: { "likes": (post.isliked) ? -1 : +1 } },
+            { $set: { "isliked": (post.isliked) ? true : false } }
         )
         return post;
     } catch (err) {

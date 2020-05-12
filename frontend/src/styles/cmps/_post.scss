@@ -6,6 +6,18 @@
     margin-bottom: 30px;
     background-color: white;
 
+    .profile-pic {
+        border-radius: rem(1000px);
+        width: 30px;
+        height: 30px;
+        object-fit: contain;
+        margin: 6px;
+    }
+
+    .profile-pic-in-desc{
+        width: 25px;
+    }
+
     .top-section {
         padding: 10px 20px 10px 14px;
         display: flex;
@@ -16,15 +28,6 @@
             cursor: pointer;
             font-size: rem(20px);
         }
-
-        .profile-pic {
-            border-radius: rem(1000px);
-            width: 30px;
-            height: 30px;
-            object-fit: contain;
-            margin: 6px;
-        }
-
     }
 
     .action-bar {
@@ -81,9 +84,9 @@ object-fit: cover;
     font-weight: bold;
 }
 
-.view-comments {
-    color: #999999;
-}
+// .view-comments {
+//     color: #999999;
+// }
 
 .add-comment {
     display: flex;
@@ -93,6 +96,7 @@ object-fit: cover;
     padding: 20px 12px 20px 15px;
     
     .form-input{
+        background-color: white;
         border: none;
         padding-right: 40%;
         font-size: rem(15px);

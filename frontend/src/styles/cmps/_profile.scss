@@ -1,24 +1,33 @@
 .profile {
-    margin-top: 80px;
+    margin-top: rem(80px);
 
     .profile-pic {
-        height: 150px;
-        width: 150px;
+        height: rem(150px);
+        width: rem(150px);
         object-fit: cover;
-        margin-right: 100px;
-        border-radius: 100px;
+        margin-right: rem(100px);
+        border-radius: rem(100px);
     }
 
     .profile-userName {
         font-size: rem(30px);
-        margin-top: 5px;
+        margin-top: rem(5px);
     }
 
     .user-deatils-wide-display {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        width: 300px;
+        width: rem(300px);
+
+        .deatails {
+            font-weight: bold;
+            margin-right: rem(5px);
+        }
+    }
+
+    button{
+        padding: 0px;
     }
 }
 
@@ -28,15 +37,13 @@
     justify-content: center;
 }
 
-.deatails {
-    font-weight: bold;
-}
+
 
 .user-deatils-narrow-display {
     display: none;
 }
 
-.full-name{
+.full-name {
     font-weight: bold;
 }
 
@@ -46,7 +53,7 @@
     justify-content: center;
     font-weight: bold;
     border-top: 1px solid $clr4;
-    margin: 20px;
+    margin: rem(20px);
 
     >span {
         margin: 0 20px 0 20px;
@@ -70,9 +77,9 @@
     display: grid;
     grid-template-columns: auto auto auto;
     // grid-template-rows: auto auto auto;
-    grid-auto-rows: 350px;
-    grid-column-gap: 20px;
-    grid-row-gap: 20px;
+    grid-auto-rows: rem(350px);
+    grid-column-gap: rem(20px);
+    grid-row-gap: rem(20px);
     justify-content: center;
     flex-direction: row;
     margin: 0 50px 0 50px;
@@ -80,7 +87,7 @@
     img {
         object-fit: cover;
         width: 100%;
-        max-width: 300px;
+        max-width: rem(300px);
         height: 100%;
         cursor: pointer;
     }
@@ -92,3 +99,13 @@
     display: none;
 }
 
+button.settings-btn {
+    background-color: none;
+    background-color: #fafafa;
+    cursor: pointer;
+    padding: none;
+
+    img {
+        width: rem(32px);
+    }
+}

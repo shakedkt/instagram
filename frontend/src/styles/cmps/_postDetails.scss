@@ -1,0 +1,102 @@
+.post-details {
+    max-width: 1000px;
+    list-style-type: none;
+    border: 1px solid rgb(46, 46, 46);
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    .top-section{
+        border-bottom: 1px solid $clr4;
+    }
+    .image-post {
+        width: 51vw;
+        max-width: none;
+        height: 88vh;
+        object-fit: cover;
+    }
+
+    .post-details-section {
+        height: 88vh;
+        display: flex;
+        flex-direction: column;
+        width: 33vw;
+        justify-content: space-between;
+        .top-section {
+            padding: 10px 20px 10px 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .post-menu {
+                cursor: pointer;
+                font-size: rem(20px);
+            }
+
+            .profile-pic {
+                border-radius: rem(1000px);
+                width: 30px;
+                height: 30px;
+                object-fit: contain;
+                margin: 6px;
+            }
+        }
+    }
+
+    .action-bar {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 12px 0 7px;
+    }
+
+    .left-side-actions {
+        display: inline-block;
+        span{
+            margin-right: rem(5px);
+        }
+    }
+
+    .right-side-actions {
+        display: inline-block;
+    }
+
+
+    .creator-name {
+        font-size: rem(14px);
+        font-weight: bold;
+    }
+
+    .like-count {
+        font-weight: bold;
+        margin-left: 10px;
+    }
+
+
+}
+
+.exit-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+}
+
+.add-comment {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-top: 1px solid $clr4;
+    padding: rem(10px);
+    align-items: baseline;
+
+    .form-input{
+        padding-right: 0px;
+    }
+}
+
+.desc-and-comments{
+    font-size: 0.875rem;
+    padding: 20px 20px 10px 10px;
+}

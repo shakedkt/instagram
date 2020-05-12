@@ -8,7 +8,8 @@
 
 export default {
   components: {
-  }
+  },
+  
 }
 
 </script>

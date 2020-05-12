@@ -92,7 +92,7 @@ export default {
   
     async loginAsGuest() {
       this.loginCred.userName = "guest";
-      this.loginCred.password = "1";
+      this.loginCred.password = "1234567";
       this.isGuest = true;
       this.doLogin();
     }

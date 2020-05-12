@@ -30,7 +30,6 @@ async function getByUserName(userName) {
     const collection = await dbService.getCollection('user')
     try {
         const user = await collection.findOne({userName})
-        
         return user
     } catch (err) {
         console.log(`ERROR: while finding user ${userName}`)
@@ -77,6 +76,17 @@ async function update(post) {
 
 async function add(user) {
     const collection = await dbService.getCollection('user')
+
+    user.avatar = 'https://i.imgur.com/tR6ajVu.jpg'
+    user.isAdmin = false
+    user.isGuest = false
+    user.followers = []
+    user.following = []
+    user.posts = []
+    user.likeCount = 0
+
+    console.log('user at add',user);
+    
     try {
         await collection.insertOne(user);
         return user;

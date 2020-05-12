@@ -9,21 +9,25 @@ async function login(userName, password) {
     if (!userName || !password) return Promise.reject('email and password are required!')
 
     const user = await userService.getByUserName(userName)
-    
-    if (!user) return Promise.reject('Invalid userName or password')
-    const match = password == user.password// TODO await bcrypt.compare(password, user.password)
-    if (!match) return Promise.reject('Invalid email or password')
+    console.log('user got from userService:', user);
 
+    if (!user) return Promise.reject('Invalid userName or password')
+    const match = await bcrypt.compare(password, user.password)
+    console.log('match', match);
+    console.log('password:', password, 'user.password:', user.password);
+    
+    if (!match) return Promise.reject('Invalid password')
     delete user.password;
     return user;
 }
 
-async function signup(email, password, username) {
-    logger.debug(`auth.service - signup with email: ${email}, username: ${username}`)
-    if (!email || !password || !username) return Promise.reject('email, username and password are required!')
+async function signup(email, userName, password, fullName) {
+
+    logger.debug(`auth.service - signup with email: ${email}, username: ${userName}, fullname: ${fullName}`)
+    if (!email || !password || !userName || !fullName) return Promise.reject('email, username and password are required!')
 
     const hash = await bcrypt.hash(password, saltRounds)
-    return userService.add({email, password: hash, username})
+    return userService.add({ email, password: hash, userName, fullName })
 }
 
 module.exports = {

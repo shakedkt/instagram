@@ -1,8 +1,6 @@
 const userService = require('./user.service.js')
 
 async function getByUserName(req, res) {
-    console.log('req.params.userName',req.params.id);
-    
     const user = await userService.getByUserName(req.params.id)
     res.send(user)
 }
@@ -14,7 +12,6 @@ async function signup(req, res) {
 }
   
 async function getUsers(req, res) {
-    console.log(req.query);
     const users = await userService.query(req.query)
     res.send(users)
 }
@@ -34,5 +31,6 @@ module.exports = {
     getByUserName,
     getUsers,
     deleteUser,
-    updateUserPost
+    updateUserPost,
+    signup
 }

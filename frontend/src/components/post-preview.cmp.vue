@@ -2,16 +2,21 @@
   <section class="post-preview">
     <div class="top-section">
       <div class="user-and-pic">
-        <router-link :to="'/user/' + userName + '/home'" class="home" exact>
+        <router-link :to="'/user/' + this.post.createdBy.userName" class="home" exact>
           <img class="profile-pic" :src="post.createdBy.avatar" />
         </router-link>
+        
         <span class="creator-name">{{post.createdBy.userName}}</span>
       </div>
       <span class="post-menu" @click="changeModal">...</span>
     </div>
     <div v-if="isModalOpen" class="post-modal" @click="changeModal">
       <ul class="action-list">
-        <li class="delete-post" v-if="this.userName.userName === this.post.createdBy.userName || this.userName.isAdmin === true" @click="deletePost">delete post</li>
+        <li
+          class="delete-post"
+          v-if="this.userName.userName === this.post.createdBy.userName || this.userName.isAdmin === true"
+          @click="deletePost"
+        >delete post</li>
         <li class="close-modal">Cancel</li>
       </ul>
     </div>
@@ -81,15 +86,15 @@
       <div class="like-count">{{post.likes}} likes</div>
 
       <div class="post-desc">
-        <span class="creator-name">{{post.createdBy.userName}} </span>
-        <span>{{post.desc}}</span>
+        <span class="creator-name">{{post.createdBy.userName}}</span>
+        <span> {{post.desc}}</span>
       </div>
 
       <div class="view-comments">view all {{post.comments.length}} comments</div>
 
       <ul class="comments">
         <li v-for="comment in post.comments" :key="comment._id">
-          <span class="creator-name">{{comment.userName}} </span>
+          <span class="creator-name">{{comment.userName}}</span>
           <span> {{comment.txt}}</span>
         </li>
       </ul>
@@ -139,28 +144,26 @@ export default {
       this.commentBody = "";
     },
     async changeLike() {
-      // var likes = parseInt(this.post.likes)
-      // this.post.isLiked = !this.post.isLiked;
-      // if (this.post.isLiked) {        
-      // likes += 1
-      // this.post.likes = likes
-      // } else {
-      //   likes -= 1
-      //   this.post.likes = likes
-      // }
-      await this.$store.dispatch({ type: "changeLike", post: this.post });
+      var likes = parseInt(this.post.likes);
+      this.post.isLiked = !this.post.isLiked;
+      if (this.post.isLiked) {
+        likes += 1;
+        this.post.likes = likes;
+      } else {
+        likes -= 1;
+        this.post.likes = likes;
+      }
+      
+      // await this.$store.dispatch({ type: "changeLike", post: this.post });
     },
     focusComment() {
       this.$refs.comment.focus();
     },
     async deletePost() {
-      
       await this.$store.dispatch({ type: "deletePost", post: this.post });
-      const userName = this.$route.params.id
-      await this.$store.dispatch({ type: "updateUser", userName }); 
-
+      const userName = this.$route.params.id;
+      await this.$store.dispatch({ type: "loadUser", userName });
       this.changeModal();
-       
     },
     changeModal() {
       this.isModalOpen = !this.isModalOpen;

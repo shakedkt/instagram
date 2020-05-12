@@ -38,6 +38,10 @@ async function ajax(endpoint, method='get', data=null) {
         if (err.response.status === 401) {
             router.push('/');
         }
+        if(err.response.status === 500) {
+            console.log(err);
+            
+        }
     }
 }
 

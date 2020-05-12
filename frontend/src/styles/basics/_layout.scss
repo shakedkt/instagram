@@ -51,6 +51,16 @@
 
 
     @include for-create-layout {
+
+        .add-comment {
+            padding-right: 0px;
+
+            .form-input {
+
+                padding-right: 0px;
+            }
+        }
+
         .login-background {
             display: none;
         }
@@ -88,6 +98,10 @@
                     display: flex;
                     flex-direction: column;
                     text-align: center;
+                }
+
+                .deatails {
+                    font-weight: bold;
                 }
             }
         }

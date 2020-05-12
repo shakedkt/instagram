@@ -2,8 +2,8 @@
 import httpService from './http.service.js'
 
 
-function query() {
-  return httpService.get('post')
+function query(amount) {
+  return httpService.get(`post?amount=${amount}`)
 }
 
 

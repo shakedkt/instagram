@@ -74,7 +74,7 @@ export default {
       };
       await this.$store.dispatch({ type: "addPost", post });
       const userName = post.createdBy.userName      
-      await this.$store.dispatch({ type: "updateUser", userName }); 
+      await this.$store.dispatch({ type: "loadUser", userName }); 
       this.$router.push("/user/" + userName + "/home");
     },
     async uploadImg(ev) {
